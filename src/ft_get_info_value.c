@@ -6,13 +6,13 @@
 /*   By: wbertoni <wbertoni@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/14 23:40:30 by wbertoni          #+#    #+#             */
-/*   Updated: 2020/10/05 18:24:50 by wbertoni         ###   ########.fr       */
+/*   Updated: 2020/10/08 16:51:24 by wbertoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cubfile.h"
 
-static void ft_del_info(char **info)
+static void			ft_del_info(char **info)
 {
 	int i;
 
@@ -25,10 +25,10 @@ static void ft_del_info(char **info)
 	free(info);
 }
 
-static t_error_file ft_get_ceiling_floor_color(t_file *file, char **info)
+static t_error_file	ft_get_ceiling_floor_color(t_file *file, char **info)
 {
-	char **rgb;
-	int size;
+	char	**rgb;
+	int		size;
 
 	size = 0;
 	while (info[size] != '\0')
@@ -42,14 +42,16 @@ static t_error_file ft_get_ceiling_floor_color(t_file *file, char **info)
 	if (size < 3)
 		return (ergbsize);
 	if (ft_strncmp("F", info[0], 3) == 0)
-		file->floor = ft_atoi(rgb[0]) << 16 | ft_atoi(rgb[1]) << 8 | ft_atoi(rgb[2]);
+		file->floor = ft_atoi(rgb[0]) << 16 | ft_atoi(rgb[1]) << 8
+		| ft_atoi(rgb[2]);
 	else if (ft_strncmp("C", info[0], 3) == 0)
-		file->ceiling = ft_atoi(rgb[0]) << 16 | ft_atoi(rgb[1]) << 8 | ft_atoi(rgb[2]);
+		file->ceiling = ft_atoi(rgb[0]) << 16 | ft_atoi(rgb[1]) << 8
+		| ft_atoi(rgb[2]);
 	ft_del_info(rgb);
 	return (noerror);
 }
 
-static t_error_file ft_get_texture_path(t_file *file, char **info)
+static t_error_file	ft_get_texture_path(t_file *file, char **info)
 {
 	int size;
 
@@ -71,7 +73,7 @@ static t_error_file ft_get_texture_path(t_file *file, char **info)
 	return (noerror);
 }
 
-static t_error_file ft_get_resolution(t_file *file, char **info)
+static t_error_file	ft_get_resolution(t_file *file, char **info)
 {
 	int size;
 
@@ -88,7 +90,7 @@ static t_error_file ft_get_resolution(t_file *file, char **info)
 	return (noerror);
 }
 
-t_error_file ft_get_info_value(t_file *file, char **info)
+t_error_file		ft_get_info_value(t_file *file, char **info)
 {
 	t_error_file e;
 
@@ -98,12 +100,17 @@ t_error_file ft_get_info_value(t_file *file, char **info)
 		if ((e = ft_get_resolution(file, info)) != noerror)
 			return (e);
 	}
-	else if ((ft_strncmp("NO", info[0], 3) == 0) || (ft_strncmp("SO", info[0], 3) == 0) || (ft_strncmp("WE", info[0], 3) == 0) || (ft_strncmp("EA", info[0], 3) == 0) || (ft_strncmp("S", info[0], 3) == 0))
+	else if ((ft_strncmp("NO", info[0], 3) == 0)
+	|| (ft_strncmp("SO", info[0], 3) == 0)
+	|| (ft_strncmp("WE", info[0], 3) == 0)
+	|| (ft_strncmp("EA", info[0], 3) == 0)
+	|| (ft_strncmp("S", info[0], 3) == 0))
 	{
 		if ((e = ft_get_texture_path(file, info)) != noerror)
 			return (e);
 	}
-	else if ((ft_strncmp("F", info[0], 3) == 0) || (ft_strncmp("C", info[0], 3) == 0))
+	else if ((ft_strncmp("F", info[0], 3) == 0)
+	|| (ft_strncmp("C", info[0], 3) == 0))
 	{
 		if ((e = ft_get_ceiling_floor_color(file, info)) != noerror)
 			return (e);
