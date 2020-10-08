@@ -6,17 +6,18 @@
 /*   By: wbertoni <wbertoni@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/15 00:25:51 by wbertoni          #+#    #+#             */
-/*   Updated: 2020/10/05 18:25:39 by wbertoni         ###   ########.fr       */
+/*   Updated: 2020/10/08 16:42:48 by wbertoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cubfile.h"
 
-static t_error_file ft_check_cubfile(t_file *file)
+static t_error_file		ft_check_cubfile(t_file *file)
 {
 	if (file->width < 0 || file->height < 0)
 		return (enores);
-	else if (!file->north || !file->south || !file->west || !file->east || !file->sprite)
+	else if (!file->north || !file->south
+	|| !file->west || !file->east || !file->sprite)
 		return (enotexture);
 	else if (file->floor < 0 || file->ceiling < 0)
 		return (enocolor);
@@ -25,7 +26,7 @@ static t_error_file ft_check_cubfile(t_file *file)
 	return (noerror);
 }
 
-static t_error_file ft_get_player_position(t_file *file)
+static t_error_file		ft_get_player_position(t_file *file)
 {
 	int i;
 	int j;
@@ -36,7 +37,9 @@ static t_error_file ft_get_player_position(t_file *file)
 	{
 		while (file->map->map[i][j] != '\0')
 		{
-			if (file->map->map[i][j] == 'N' || file->map->map[i][j] == 'S' || file->map->map[i][j] == 'W' || file->map->map[i][j] == 'E')
+			if (file->map->map[i][j] == 'N'
+			|| file->map->map[i][j] == 'S' || file->map->map[i][j] == 'W'
+			|| file->map->map[i][j] == 'E')
 			{
 				file->map->initial_pl_cardinal = file->map->map[i][j];
 				file->map->initial_pl_x = j * TILE_SIZE;
@@ -52,11 +55,15 @@ static t_error_file ft_get_player_position(t_file *file)
 	return (eplayer);
 }
 
-t_error_file ft_get_cubfile_value(t_file *file, char *line)
+/*
+** Possível memoryleak
+*/
+
+t_error_file			ft_get_cubfile_value(t_file *file, char *line)
 {
-	int i;
-	char **info;
-	t_error_file e;
+	int				i;
+	char			**info;
+	t_error_file	e;
 
 	i = 0;
 	e = noerror;
@@ -76,9 +83,8 @@ t_error_file ft_get_cubfile_value(t_file *file, char *line)
 	return (noerror);
 }
 
-t_error_file ft_malloc_file_map(t_file *file)
+t_error_file			ft_malloc_file_map(t_file *file)
 {
-
 	file->map = (t_map *)malloc(sizeof(t_map));
 	if (!file->map)
 		return (enull);
@@ -87,7 +93,7 @@ t_error_file ft_malloc_file_map(t_file *file)
 	return (noerror);
 }
 
-int ft_cubfile_check_and_get_function(t_file *file)
+int						ft_cubfile_check_and_get_function(t_file *file)
 {
 	t_error_file e;
 
