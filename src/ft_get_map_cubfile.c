@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_get_map_cubfile.c                                       :+:      :+:    :+:   */
+/*   ft_get_map_cubfile.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wbertoni <wbertoni@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/06/09 17:21:14 by wbertoni          #+#    #+#             */
-/*   Updated: 2020/06/09 18:05:58 by wbertoni         ###   ########.fr       */
+/*   Created: 2020/10/08 16:52:50 by wbertoni          #+#    #+#             */
+/*   Updated: 2020/10/08 16:54:24 by wbertoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cubfile.h"
 
-void ft_free_map(char **map)
+void			ft_free_map(char **map)
 {
 	int i_row;
 
@@ -25,7 +25,7 @@ void ft_free_map(char **map)
 	free(map);
 }
 
-static void ft_new_row(t_map *map, char *line, const int i, int j)
+static void		ft_new_row(t_map *map, char *line, const int i, int j)
 {
 	while (j < map->num_col && line[j] != '\0')
 	{
@@ -35,7 +35,7 @@ static void ft_new_row(t_map *map, char *line, const int i, int j)
 	map->map[i][j] = '\0';
 }
 
-static int ft_first_row(t_map *map, char *line, int size)
+static int		ft_first_row(t_map *map, char *line, int size)
 {
 	int j;
 
@@ -49,7 +49,7 @@ static int ft_first_row(t_map *map, char *line, int size)
 	return (TRUE);
 }
 
-static int ft_mapcpy(t_map *map, char **tmp)
+static int		ft_mapcpy(t_map *map, char **tmp)
 {
 	int i;
 	int j;
@@ -66,7 +66,7 @@ static int ft_mapcpy(t_map *map, char **tmp)
 			if (tmp[i][j] != '\0')
 				map->map[i][j] = tmp[i][j];
 			else
-				break;
+				break ;
 			j++;
 		}
 		j = 0;
@@ -75,12 +75,12 @@ static int ft_mapcpy(t_map *map, char **tmp)
 	return (i);
 }
 
-t_error_file ft_get_map_cubfile(t_file *file, char *line)
+t_error_file	ft_get_map_cubfile(t_file *file, char *line)
 {
-	int size;
-	int i;
-	int j;
-	char **tmp;
+	int		size;
+	int		i;
+	int		j;
+	char	**tmp;
 
 	j = 0;
 	i = 0;
