@@ -6,7 +6,7 @@
 /*   By: wbertoni <wbertoni@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/05 18:34:40 by wbertoni          #+#    #+#             */
-/*   Updated: 2020/10/08 15:55:41 by wbertoni         ###   ########.fr       */
+/*   Updated: 2020/10/08 16:10:35 by wbertoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,9 @@ static int		ft_check_map_cubfile_symbol(t_map *map)
 }
 
 /**
- * cr = current_row
- * cc = current_col
- * dir = direction
+** cr = current_row
+** cc = current_col
+** dir = direction
 **/
 
 static int		ft_has_wall_row_column(t_map *m, const int cr,
