@@ -1,28 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_cubfile.c                                  :+:      :+:    :+:   */
+/*   ft_cubfile.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wbertoni <wbertoni@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/06/14 23:45:35 by wbertoni          #+#    #+#             */
-/*   Updated: 2020/06/15 00:11:36 by wbertoni         ###   ########.fr       */
+/*   Created: 2020/10/08 16:45:43 by wbertoni          #+#    #+#             */
+/*   Updated: 2020/10/08 16:46:38 by wbertoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cubfile.h"
 
-static void ft_del_line(char **line)
+static void		ft_del_line(char **line)
 {
 	free(*line);
 	free(line);
 }
 
-static int ft_read_cubfile(t_file *file, int fopen)
+static int		ft_read_cubfile(t_file *file, int fopen)
 {
-	t_error_file e;
-	char **line;
-	int ret;
+	t_error_file	e;
+	char			**line;
+	int				ret;
 
 	line = (char **)malloc(sizeof(char *));
 	if (!line)
@@ -42,7 +42,7 @@ static int ft_read_cubfile(t_file *file, int fopen)
 	return (TRUE);
 }
 
-t_file *ft_create_file_struct(void)
+t_file			*ft_create_file_struct(void)
 {
 	t_file *file;
 
@@ -61,7 +61,7 @@ t_file *ft_create_file_struct(void)
 	return (file);
 }
 
-int ft_count_sprite(t_map *map)
+int				ft_count_sprite(t_map *map)
 {
 	int count;
 	int i;
@@ -84,11 +84,11 @@ int ft_count_sprite(t_map *map)
 	return (count);
 }
 
-t_file *ft_cubfile(char *cubfile)
+t_file			*ft_cubfile(char *cubfile)
 {
-	int fopen;
-	t_file *file;
-	t_error_file e;
+	int				fopen;
+	t_file			*file;
+	t_error_file	e;
 
 	e = enull;
 	file = ft_create_file_struct();
@@ -111,7 +111,7 @@ t_file *ft_cubfile(char *cubfile)
 	return (file);
 }
 
-int main(int argc, char **argv)
+int				main(int argc, char **argv)
 {
 	t_file *file;
 
