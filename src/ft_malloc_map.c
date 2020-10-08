@@ -6,13 +6,13 @@
 /*   By: wbertoni <wbertoni@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/09 18:04:54 by wbertoni          #+#    #+#             */
-/*   Updated: 2020/10/04 12:42:55 by wbertoni         ###   ########.fr       */
+/*   Updated: 2020/10/08 16:56:05 by wbertoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cubfile.h"
 
-static char *ft_spacelloc(size_t count, size_t size)
+static char	*ft_spacelloc(size_t count, size_t size)
 {
 	char *ptr;
 
@@ -26,10 +26,10 @@ static char *ft_spacelloc(size_t count, size_t size)
 	return (ptr);
 }
 
-char **ft_malloc_map(int row, int col)
+char		**ft_malloc_map(int row, int col)
 {
-	char **ptr;
-	int i;
+	char	**ptr;
+	int		i;
 
 	i = 0;
 	ptr = (char **)malloc((row + 1) * sizeof(char *));
