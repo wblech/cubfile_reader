@@ -6,7 +6,7 @@
 /*   By: wbertoni <wbertoni@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/05 18:34:40 by wbertoni          #+#    #+#             */
-/*   Updated: 2020/10/08 15:43:08 by wbertoni         ###   ########.fr       */
+/*   Updated: 2020/10/08 15:55:41 by wbertoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,35 +43,43 @@ static int		ft_check_map_cubfile_symbol(t_map *map)
  * dir = direction
 **/
 
-static int		ft_has_wall_row_column(t_map *map, const int cr,
-								const int cc, t_face dir)
+static int		ft_has_wall_row_column(t_map *m, const int cr,
+								const int cc, t_face d)
 {
 	int i;
 	int pos;
 
-	if (dir == left || dir == up)
+	if (d == left || d == up)
 	{
-		i = (dir == left ? cc : cr);
+		i = (d == left ? cc : cr);
 		while (i >= 0)
 		{
-			if (ft_is_w_or_s(pos = dir == left ? map->map[cr][i]
-							: map->map[i][cc]))
+			if (ft_is_w_or_s(pos = d == left ? m->map[cr][i] : m->map[i][cc]))
 				return (pos == '1' ? TRUE : FALSE);
 			i--;
 		}
 	}
 	else
 	{
-		i = (dir == right ? cc : cr);
-		while (i < map->num_col)
+		i = (d == right ? cc : cr);
+		while (i < m->num_col)
 		{
-			if (ft_is_w_or_s(pos = dir == right ? map->map[cr][i]
-							: map->map[i][cc]))
+			if (ft_is_w_or_s(pos = d == right ? m->map[cr][i] : m->map[i][cc]))
 				return (pos == '1' ? TRUE : FALSE);
 			i++;
 		}
 	}
 	return (FALSE);
+}
+
+static int		ft_check_direction(t_map *map, int i, int j, t_face direction)
+{
+	while (direction <= right)
+	{
+		if (!ft_has_wall_row_column(map, i, j, direction++))
+			return (FALSE);
+	}
+	return (TRUE);
 }
 
 static int		ft_check_map_cubfile_border(t_map *map)
@@ -89,13 +97,9 @@ static int		ft_check_map_cubfile_border(t_map *map)
 		{
 			if (map->map[i][j] != '1' && map->map[i][j] != ' ')
 			{
-				while (direction <= right)
-				{
-					if (!ft_has_wall_row_column(map, i, j, direction++))
-						return (FALSE);
-				}
+				if (!ft_check_direction(map, i, j, direction))
+					return (FALSE);
 			}
-			direction = up;
 			j++;
 		}
 		j = 0;
