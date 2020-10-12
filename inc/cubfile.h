@@ -2,6 +2,7 @@
 #define CUBFILE_H
 
 #include <stdio.h>
+#include <unistd.h>
 #include "get_next_line.h"
 #include "../libft/libft.h"
 
@@ -12,26 +13,6 @@
 #define TILE_SIZE 64
 #endif
 
-typedef struct s_vars
-{
-	char *teste;
-} t_vars;
-
-typedef struct s_sprite
-{
-	float x;
-	float y;
-	int num_ray;
-	float distance;
-	float angle;
-	float draw_top;
-	float draw_bottom;
-	float draw_height;
-	float draw_width;
-	float draw_left;
-	int visible;
-} t_sprite;
-
 typedef struct s_map // criar função que le e cria a estrutura
 {
 	char **map;
@@ -40,7 +21,6 @@ typedef struct s_map // criar função que le e cria a estrutura
 	char initial_pl_cardinal;
 	int initial_pl_x;
 	int initial_pl_y;
-	t_sprite **sprite;
 	int num_sprite;
 } t_map;
 
@@ -97,5 +77,8 @@ t_file *ft_cubfile(char *cubfile);
 int ft_cubfile_check_and_get_function(t_file *file);
 t_error_file ft_get_cubfile_value(t_file *file, char *line);
 t_error_file ft_malloc_file_map(t_file *file);
+void ft_del_file(t_file *file);
+void ft_del_map(t_map *map);
+
 
 #endif
