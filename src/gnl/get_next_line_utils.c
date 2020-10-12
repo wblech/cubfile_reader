@@ -6,7 +6,7 @@
 /*   By: wbertoni <wbertoni@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/27 13:30:54 by wbertoni          #+#    #+#             */
-/*   Updated: 2020/10/05 18:32:27 by wbertoni         ###   ########.fr       */
+/*   Updated: 2020/10/12 12:02:19 by wbertoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,4 +47,3 @@ char	*ft_haschr(const char *s, int c)
 	}
 	return (0);
 }
-
