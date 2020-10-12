@@ -11,7 +11,8 @@ SRCS = 	$(DIR_SRC)/gnl/get_next_line.c \
 		$(DIR_SRC)/ft_malloc_map.c \
 		$(DIR_SRC)/ft_get_info_value.c \
 		$(DIR_SRC)/ft_cubfile.c \
-		$(DIR_SRC)/ft_cubfile_utils.c
+		$(DIR_SRC)/ft_cubfile_utils.c \
+		$(DIR_SRC)/ft_del_file.c
 
 NAME = main
 OBJ = $(patsubst $(DIR_SRC)/%.c, $(DIR_OBJ)/%.o, $(SRCS))
