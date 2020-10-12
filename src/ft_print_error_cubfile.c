@@ -6,18 +6,18 @@
 /*   By: wbertoni <wbertoni@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/08 17:00:22 by wbertoni          #+#    #+#             */
-/*   Updated: 2020/10/12 11:39:27 by wbertoni         ###   ########.fr       */
+/*   Updated: 2020/10/12 12:06:55 by wbertoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cubfile.h"
 
-void ft_putchar(char c)
+void			ft_putchar(char c)
 {
 	write(1, &c, 1);
 }
 
-void ft_putstr(char *str)
+void			ft_putstr(char *str)
 {
 	int counter;
 
@@ -29,7 +29,7 @@ void ft_putstr(char *str)
 	}
 }
 
-static void ft_print_error_cubfile_norminette(t_error_file error)
+static void		ft_print_error_cubfile_norminette(t_error_file error)
 {
 	if (error == enotexture)
 		ft_putstr("Error:\nCouldn´t find  texture information in cubfile\n");
@@ -42,7 +42,7 @@ static void ft_print_error_cubfile_norminette(t_error_file error)
 		ft_putstr("Error:\nCouldn´t find initial player position on the map\n");
 }
 
-void ft_print_error_cubfile(t_error_file error)
+void			ft_print_error_cubfile(t_error_file error)
 {
 	if (error == eallow)
 		ft_putstr("Error\nSymbols allowed for map, without quote,\

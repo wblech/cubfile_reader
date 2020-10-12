@@ -6,7 +6,7 @@
 /*   By: wbertoni <wbertoni@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/12 16:20:11 by wbertoni          #+#    #+#             */
-/*   Updated: 2020/06/02 11:52:25 by wbertoni         ###   ########.fr       */
+/*   Updated: 2020/10/12 12:09:54 by wbertoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # ifndef OPEN_MAX
 #  define OPEN_MAX 1028
 # endif
+
 int					ft_strlen_char(const char *str, char c);
 size_t				ft_strlcpy(char *dst, const char *src, size_t dstsize);
 char				*ft_strjoin(char const *s1, char const *s2);
