@@ -6,18 +6,17 @@
 /*   By: wbertoni <wbertoni@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/10 12:22:06 by wbertoni          #+#    #+#             */
-/*   Updated: 2020/10/05 19:13:19 by wbertoni         ###   ########.fr       */
+/*   Updated: 2020/10/12 12:08:42 by wbertoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cubfile.h"
 
+/*
+** w = wall
+** s = space
+*/
 
-/**
- * w = wall
- * s = space
- *
-**/
 int			ft_is_w_or_s(int c)
 {
 	if (c == '1' || c == ' ')

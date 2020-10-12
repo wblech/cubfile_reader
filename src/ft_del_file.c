@@ -6,13 +6,13 @@
 /*   By: wbertoni <wbertoni@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/12 11:06:00 by wbertoni          #+#    #+#             */
-/*   Updated: 2020/10/12 11:31:50 by wbertoni         ###   ########.fr       */
+/*   Updated: 2020/10/12 12:05:54 by wbertoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cubfile.h"
 
-void ft_del_map(t_map *map)
+void	ft_del_map(t_map *map)
 {
 	int i;
 
@@ -29,7 +29,7 @@ void ft_del_map(t_map *map)
 	}
 }
 
-void ft_del_file(t_file *file)
+void	ft_del_file(t_file *file)
 {
 	if (file != NULL)
 	{
